@@ -38,6 +38,8 @@
             this.numMen = new System.Windows.Forms.NumericUpDown();
             this.clearAll = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.csvfile = new System.Windows.Forms.CheckBox();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMen)).BeginInit();
             this.SuspendLayout();
@@ -143,9 +145,9 @@
             // 
             // clearAll
             // 
-            this.clearAll.Location = new System.Drawing.Point(592, 462);
+            this.clearAll.Location = new System.Drawing.Point(716, 463);
             this.clearAll.Name = "clearAll";
-            this.clearAll.Size = new System.Drawing.Size(485, 23);
+            this.clearAll.Size = new System.Drawing.Size(361, 23);
             this.clearAll.TabIndex = 9;
             this.clearAll.Text = "Clear All";
             this.clearAll.UseVisualStyleBackColor = true;
@@ -158,11 +160,26 @@
             this.progressBar1.Size = new System.Drawing.Size(1063, 35);
             this.progressBar1.TabIndex = 10;
             // 
+            // csvfile
+            // 
+            this.csvfile.AutoSize = true;
+            this.csvfile.Location = new System.Drawing.Point(591, 464);
+            this.csvfile.Name = "csvfile";
+            this.csvfile.Size = new System.Drawing.Size(119, 17);
+            this.csvfile.TabIndex = 11;
+            this.csvfile.Text = "CSV File for Toplam";
+            this.csvfile.UseVisualStyleBackColor = true;
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.DefaultExt = "csv";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1089, 591);
+            this.Controls.Add(this.csvfile);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.clearAll);
             this.Controls.Add(this.numMen);
@@ -194,6 +211,8 @@
         private System.Windows.Forms.NumericUpDown numMen;
         private System.Windows.Forms.Button clearAll;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.CheckBox csvfile;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
 

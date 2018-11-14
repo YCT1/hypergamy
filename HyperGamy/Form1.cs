@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.IO;
 namespace HyperGamy
 {
     public partial class Form1 : Form
@@ -45,7 +45,7 @@ namespace HyperGamy
             Random rastgele = new Random();
             for (int i = 0; i < myMen.Length; i++)
             {
-                int[] my = new int[20];
+                int[] my = new int[100];
                 string foradd = "";
                 int[] SMV = new int[Int32.Parse(numericUpDown1.Value.ToString())+1];
                 int maxVal = 0;
@@ -91,6 +91,7 @@ namespace HyperGamy
             groupList.Items.Clear();
             int[] toplam = new int[11];
             int[] toplamPeople = new int[11];
+            float[] avrSex = new float[11];
             int toplamSex = 0;
             for (int i = 0; i < myMen.Length; i++)
             {
@@ -104,6 +105,7 @@ namespace HyperGamy
             for(int i = 1; i < toplamPeople.Length; i++)
             {
                 groupList.Items.Add(toplamPeople[i]);
+                
                 //////////////Progress Bar Code
                 progressBar1.Value++;
             }
@@ -116,6 +118,24 @@ namespace HyperGamy
             }
             groupList.Items.Add("AAAAAAAAAAA");
             groupList.Items.Add(toplamSex);
+            groupList.Items.Add("AAAAAAAAAAA");
+            for(int i = 1; i < toplam.Length; i++)
+            {
+                float a = toplam[i];
+                float b = toplamPeople[i];
+               avrSex[i] = a / b;
+                groupList.Items.Add(avrSex[i]);
+            }
+            if (csvfile.Checked)
+            {
+                saveFileDialog1.ShowDialog();
+                StreamWriter myOutputStream = new StreamWriter(saveFileDialog1.FileName);
+                foreach (object item in groupList.Items)
+                {
+                    myOutputStream.WriteLine(item);
+                }
+                myOutputStream.Close();
+            }
         }
 
         private void numMen_ValueChanged(object sender, EventArgs e)
