@@ -33,6 +33,9 @@
             this.Group = new System.Windows.Forms.Button();
             this.groupList = new System.Windows.Forms.ListBox();
             this.showSMV = new System.Windows.Forms.Button();
+            this.topla = new System.Windows.Forms.Button();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // Yarat
@@ -40,7 +43,7 @@
             this.Yarat.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Yarat.AutoSize = true;
-            this.Yarat.Location = new System.Drawing.Point(12, 460);
+            this.Yarat.Location = new System.Drawing.Point(12, 492);
             this.Yarat.Name = "Yarat";
             this.Yarat.Size = new System.Drawing.Size(266, 45);
             this.Yarat.TabIndex = 0;
@@ -60,7 +63,7 @@
             // 
             // Group
             // 
-            this.Group.Location = new System.Drawing.Point(284, 460);
+            this.Group.Location = new System.Drawing.Point(284, 492);
             this.Group.Name = "Group";
             this.Group.Size = new System.Drawing.Size(301, 45);
             this.Group.TabIndex = 3;
@@ -78,19 +81,43 @@
             // 
             // showSMV
             // 
-            this.showSMV.Location = new System.Drawing.Point(591, 460);
+            this.showSMV.Location = new System.Drawing.Point(591, 492);
             this.showSMV.Name = "showSMV";
-            this.showSMV.Size = new System.Drawing.Size(338, 45);
+            this.showSMV.Size = new System.Drawing.Size(277, 45);
             this.showSMV.TabIndex = 5;
             this.showSMV.Text = "Show SMV";
             this.showSMV.UseVisualStyleBackColor = true;
             this.showSMV.Click += new System.EventHandler(this.showSMV_Click);
             // 
+            // topla
+            // 
+            this.topla.Location = new System.Drawing.Point(874, 492);
+            this.topla.Name = "topla";
+            this.topla.Size = new System.Drawing.Size(202, 45);
+            this.topla.TabIndex = 6;
+            this.topla.Text = "Toplam Sex";
+            this.topla.UseVisualStyleBackColor = true;
+            this.topla.Click += new System.EventHandler(this.topla_Click);
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(12, 463);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(281, 20);
+            this.numericUpDown1.TabIndex = 7;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1089, 517);
+            this.ClientSize = new System.Drawing.Size(1089, 549);
+            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.topla);
             this.Controls.Add(this.showSMV);
             this.Controls.Add(this.groupList);
             this.Controls.Add(this.Group);
@@ -98,6 +125,7 @@
             this.Controls.Add(this.Yarat);
             this.Name = "Form1";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -110,6 +138,8 @@
         private System.Windows.Forms.Button Group;
         private System.Windows.Forms.ListBox groupList;
         private System.Windows.Forms.Button showSMV;
+        private System.Windows.Forms.Button topla;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
     }
 }
 
