@@ -16,16 +16,16 @@ namespace HyperGamy
         {
             InitializeComponent();
         }
-
+        int mannumber = 100;
         private void listbox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
-        Men[] myMen = new Men[100];
+        Men[] myMen;
         private void hesaplama_Click(object sender, EventArgs e)
         {
             Random rastgele = new Random();
-            
+            myMen = new Men[mannumber];
             for (int i=0; i < myMen.Length; i++)
             {
                 myMen[i] = new Men();
@@ -80,14 +80,37 @@ namespace HyperGamy
         {
             groupList.Items.Clear();
             int[] toplam = new int[11];
+            int[] toplamPeople = new int[11];
+            int toplamSex = 0;
             for (int i = 0; i < myMen.Length; i++)
             {
                 toplam[myMen[i].SMV]= toplam[myMen[i].SMV] + myMen[i].SexCount;
+                toplamPeople[myMen[i].SMV]++;
+                toplamSex = toplamSex + myMen[i].SexCount;
             }
+            for(int i = 1; i < toplamPeople.Length; i++)
+            {
+                groupList.Items.Add(toplamPeople[i]);
+            }
+            groupList.Items.Add("AAAAAAAAAAAAAAA");
             for (int i = 0; i < toplam.Length; i++)
             {
                 groupList.Items.Add(i.ToString() + "," + toplam[i]);
             }
+            groupList.Items.Add("AAAAAAAAAAA");
+            groupList.Items.Add(toplamSex);
+        }
+
+        private void numMen_ValueChanged(object sender, EventArgs e)
+        {
+            mannumber = Int32.Parse(numMen.Value.ToString());
+        }
+
+        private void clearAll_Click(object sender, EventArgs e)
+        {
+            groupList.Items.Clear();
+            listbox.Items.Clear();
+            myMen = null;
         }
     }
 

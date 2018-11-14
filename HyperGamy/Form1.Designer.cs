@@ -35,7 +35,10 @@
             this.showSMV = new System.Windows.Forms.Button();
             this.topla = new System.Windows.Forms.Button();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numMen = new System.Windows.Forms.NumericUpDown();
+            this.clearAll = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numMen)).BeginInit();
             this.SuspendLayout();
             // 
             // Yarat
@@ -95,7 +98,7 @@
             this.topla.Name = "topla";
             this.topla.Size = new System.Drawing.Size(202, 45);
             this.topla.TabIndex = 6;
-            this.topla.Text = "Toplam Sex";
+            this.topla.Text = "Toplam";
             this.topla.UseVisualStyleBackColor = true;
             this.topla.Click += new System.EventHandler(this.topla_Click);
             // 
@@ -111,11 +114,36 @@
             0,
             0});
             // 
+            // numMen
+            // 
+            this.numMen.Location = new System.Drawing.Point(311, 462);
+            this.numMen.Name = "numMen";
+            this.numMen.Size = new System.Drawing.Size(274, 20);
+            this.numMen.TabIndex = 8;
+            this.numMen.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.numMen.ValueChanged += new System.EventHandler(this.numMen_ValueChanged);
+            // 
+            // clearAll
+            // 
+            this.clearAll.Location = new System.Drawing.Point(592, 462);
+            this.clearAll.Name = "clearAll";
+            this.clearAll.Size = new System.Drawing.Size(485, 23);
+            this.clearAll.TabIndex = 9;
+            this.clearAll.Text = "Clear All";
+            this.clearAll.UseVisualStyleBackColor = true;
+            this.clearAll.Click += new System.EventHandler(this.clearAll_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1089, 549);
+            this.Controls.Add(this.clearAll);
+            this.Controls.Add(this.numMen);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.topla);
             this.Controls.Add(this.showSMV);
@@ -124,8 +152,9 @@
             this.Controls.Add(this.listbox);
             this.Controls.Add(this.Yarat);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Hypergamy";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numMen)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -140,6 +169,8 @@
         private System.Windows.Forms.Button showSMV;
         private System.Windows.Forms.Button topla;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown numMen;
+        private System.Windows.Forms.Button clearAll;
     }
 }
 
