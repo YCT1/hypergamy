@@ -21,7 +21,7 @@ namespace HyperGamy
         {
 
         }
-        Men[] myMen = new Men[10];
+        Men[] myMen = new Men[100];
         private void hesaplama_Click(object sender, EventArgs e)
         {
             Random rastgele = new Random();
@@ -39,34 +39,28 @@ namespace HyperGamy
         {
             
             Random rastgele = new Random();
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < myMen.Length; i++)
             {
                 int[] my = new int[20];
                 string foradd = "";
-                for(int a=1; a < numericUpDown1.Value + 1; a++)
+                int[] SMV = new int[Int32.Parse(numericUpDown1.Value.ToString())+1];
+                int maxVal = 0;
+                int index = -1;
+                for (int a=1; a < numericUpDown1.Value + 1; a++)
                 {
-                    my[a]= rastgele.Next(1, myMen.Length);
-                    foradd = foradd + my[a].ToString() + ",";
-                }
-                groupList.Items.Add(foradd);
-                int my1 = rastgele.Next(0, myMen.Length);
-                int my2 = rastgele.Next(0, myMen.Length);
-                //groupList.Items.Add(myMen[my1].SMV.ToString() + "," + myMen[my2].SMV.ToString());
-                if (Math.Equals(my1, my2))
-                {
+                    my[a]= rastgele.Next(0, myMen.Length);
+                    foradd = foradd +myMen[my[a]].SMV.ToString() + ",";
+                    SMV[a] = myMen[my[a]].SMV;
+                    int thisNum = SMV[a];
+                    if(thisNum > maxVal)
+                    {
+                        maxVal = thisNum;
+                        index = a;
+                    }
 
                 }
-                else
-                {
-                    if(myMen[my1].SMV > myMen[my2].SMV)
-                    {
-                        myMen[my1].SexCount++;
-                    }
-                    else
-                    {
-                        myMen[my2].SexCount++;
-                    }
-                }
+                myMen[my[index]].SexCount++;
+                groupList.Items.Add(foradd);
                 
                
             }
