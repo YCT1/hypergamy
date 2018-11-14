@@ -37,14 +37,13 @@
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.numMen = new System.Windows.Forms.NumericUpDown();
             this.clearAll = new System.Windows.Forms.Button();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMen)).BeginInit();
             this.SuspendLayout();
             // 
             // Yarat
             // 
-            this.Yarat.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.Yarat.AutoSize = true;
             this.Yarat.Location = new System.Drawing.Point(12, 492);
             this.Yarat.Name = "Yarat";
@@ -105,6 +104,16 @@
             // numericUpDown1
             // 
             this.numericUpDown1.Location = new System.Drawing.Point(12, 463);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(281, 20);
             this.numericUpDown1.TabIndex = 7;
@@ -117,6 +126,11 @@
             // numMen
             // 
             this.numMen.Location = new System.Drawing.Point(311, 462);
+            this.numMen.Maximum = new decimal(new int[] {
+            99999999,
+            0,
+            0,
+            0});
             this.numMen.Name = "numMen";
             this.numMen.Size = new System.Drawing.Size(274, 20);
             this.numMen.TabIndex = 8;
@@ -137,11 +151,19 @@
             this.clearAll.UseVisualStyleBackColor = true;
             this.clearAll.Click += new System.EventHandler(this.clearAll_Click);
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(13, 544);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(1063, 35);
+            this.progressBar1.TabIndex = 10;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1089, 549);
+            this.ClientSize = new System.Drawing.Size(1089, 591);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.clearAll);
             this.Controls.Add(this.numMen);
             this.Controls.Add(this.numericUpDown1);
@@ -171,6 +193,7 @@
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.NumericUpDown numMen;
         private System.Windows.Forms.Button clearAll;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }
 
