@@ -43,6 +43,11 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.mainSettingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gaussCreationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.copyFirstListBoxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.firstOneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.secondOneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMen)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -109,6 +114,8 @@
             // 
             // numericUpDown1
             // 
+            this.numericUpDown1.AccessibleDescription = "Test";
+            this.numericUpDown1.Cursor = System.Windows.Forms.Cursors.Default;
             this.numericUpDown1.Location = new System.Drawing.Point(12, 463);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             9999999,
@@ -181,7 +188,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mainSettingToolStripMenuItem});
+            this.mainSettingToolStripMenuItem,
+            this.copyFirstListBoxToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1089, 24);
@@ -199,15 +207,58 @@
             // gaussCreationToolStripMenuItem
             // 
             this.gaussCreationToolStripMenuItem.Name = "gaussCreationToolStripMenuItem";
-            this.gaussCreationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.gaussCreationToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.gaussCreationToolStripMenuItem.Text = "Gauss Creation";
             this.gaussCreationToolStripMenuItem.Click += new System.EventHandler(this.gaussCreationToolStripMenuItem_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 447);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(211, 13);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "How much man must compete for a women";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(308, 446);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(141, 13);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Number of Man and Women";
+            // 
+            // copyFirstListBoxToolStripMenuItem
+            // 
+            this.copyFirstListBoxToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.firstOneToolStripMenuItem,
+            this.secondOneToolStripMenuItem});
+            this.copyFirstListBoxToolStripMenuItem.Name = "copyFirstListBoxToolStripMenuItem";
+            this.copyFirstListBoxToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.copyFirstListBoxToolStripMenuItem.Text = "Copy";
+            // 
+            // firstOneToolStripMenuItem
+            // 
+            this.firstOneToolStripMenuItem.Name = "firstOneToolStripMenuItem";
+            this.firstOneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.firstOneToolStripMenuItem.Text = "First One";
+            this.firstOneToolStripMenuItem.Click += new System.EventHandler(this.firstOneToolStripMenuItem_Click);
+            // 
+            // secondOneToolStripMenuItem
+            // 
+            this.secondOneToolStripMenuItem.Name = "secondOneToolStripMenuItem";
+            this.secondOneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.secondOneToolStripMenuItem.Text = "Second One";
+            this.secondOneToolStripMenuItem.Click += new System.EventHandler(this.secondOneToolStripMenuItem_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1089, 591);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.csvfile);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.clearAll);
@@ -249,6 +300,11 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem mainSettingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gaussCreationToolStripMenuItem;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ToolStripMenuItem copyFirstListBoxToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem firstOneToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem secondOneToolStripMenuItem;
     }
 }
 

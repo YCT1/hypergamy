@@ -32,9 +32,10 @@ namespace HyperGamy
             myMen = new Men[mannumber];
             if (gauss)
             {
-                double mean = 5;
+                double mean = 5.5;
                 double stdDev = 1.38;
-                
+                int negSay = 0;
+                int pozSay = 0;
                 Normal normalDist = new Normal(mean, stdDev);
                 for(int i = 0; i < myMen.Length; i++)
                 {
@@ -44,15 +45,25 @@ namespace HyperGamy
                     
                     int b = Convert.ToInt32(a);
                     myMen[i] = new Men();
+                    if (b > 10)
+                    {
+                        negSay++;
+                        b = 10;
+                    }
+                    if (b < 1)
+                    {
+                        b = 1;
+                        pozSay++;
+                    }
                     myMen[i].SMV = b;
                     listbox.Items.Add("Sex Count: " + myMen[i].SexCount.ToString() + " SMV: " + myMen[i].SMV.ToString());
                     //Progress Bar Code
                     progressBar1.Maximum = myMen.Length;
                     progressBar1.Value++;
-                    
+                   
 
                 }
-                
+                listbox.Items.Add("Poz Sayisi: " + negSay.ToString() + " Neg Sayisi: " + pozSay.ToString());
                 return;
             }
             
@@ -110,7 +121,7 @@ namespace HyperGamy
             listbox.Items.Clear();
             for (int i = 0; i < myMen.Length; i++)
             {
-                listbox.Items.Add("My Man ID:" + i.ToString() + "Sex Count: " + myMen[i].SexCount.ToString() + " SMV: " + myMen[i].SMV.ToString());
+                listbox.Items.Add("ID: " + i.ToString() + " Sex Count: " + myMen[i].SexCount.ToString() + " SMV: " + myMen[i].SMV.ToString());
                 //Progress Bar Code
                 progressBar1.Maximum = myMen.Length;
                 progressBar1.Value++;
@@ -192,6 +203,28 @@ namespace HyperGamy
         public static float Sigmoid(double value)
         {
             return 1.0f / (1.0f + (float)Math.Exp(-value));
+        }
+
+        private void firstOneToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.ShowDialog();
+            StreamWriter myOutputStream = new StreamWriter(saveFileDialog1.FileName);
+            foreach (object item in listbox.Items)
+            {
+                myOutputStream.WriteLine(item);
+            }
+            myOutputStream.Close();
+        }
+
+        private void secondOneToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.ShowDialog();
+            StreamWriter myOutputStream = new StreamWriter(saveFileDialog1.FileName);
+            foreach (object item in groupList.Items)
+            {
+                myOutputStream.WriteLine(item);
+            }
+            myOutputStream.Close();
         }
     }
 
