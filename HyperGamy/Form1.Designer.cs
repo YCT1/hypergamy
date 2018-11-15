@@ -40,8 +40,12 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.csvfile = new System.Windows.Forms.CheckBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.mainSettingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gaussCreationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMen)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // Yarat
@@ -58,10 +62,10 @@
             // listbox
             // 
             this.listbox.FormattingEnabled = true;
-            this.listbox.Location = new System.Drawing.Point(12, 12);
+            this.listbox.Location = new System.Drawing.Point(12, 38);
             this.listbox.Margin = new System.Windows.Forms.Padding(15);
             this.listbox.Name = "listbox";
-            this.listbox.Size = new System.Drawing.Size(281, 433);
+            this.listbox.Size = new System.Drawing.Size(281, 407);
             this.listbox.TabIndex = 1;
             this.listbox.SelectedIndexChanged += new System.EventHandler(this.listbox_SelectedIndexChanged);
             // 
@@ -78,9 +82,9 @@
             // groupList
             // 
             this.groupList.FormattingEnabled = true;
-            this.groupList.Location = new System.Drawing.Point(311, 12);
+            this.groupList.Location = new System.Drawing.Point(311, 38);
             this.groupList.Name = "groupList";
-            this.groupList.Size = new System.Drawing.Size(766, 433);
+            this.groupList.Size = new System.Drawing.Size(766, 407);
             this.groupList.TabIndex = 4;
             // 
             // showSMV
@@ -174,6 +178,31 @@
             // 
             this.saveFileDialog1.DefaultExt = "csv";
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mainSettingToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1089, 24);
+            this.menuStrip1.TabIndex = 12;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // mainSettingToolStripMenuItem
+            // 
+            this.mainSettingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gaussCreationToolStripMenuItem});
+            this.mainSettingToolStripMenuItem.Name = "mainSettingToolStripMenuItem";
+            this.mainSettingToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
+            this.mainSettingToolStripMenuItem.Text = "Main Setting";
+            // 
+            // gaussCreationToolStripMenuItem
+            // 
+            this.gaussCreationToolStripMenuItem.Name = "gaussCreationToolStripMenuItem";
+            this.gaussCreationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.gaussCreationToolStripMenuItem.Text = "Gauss Creation";
+            this.gaussCreationToolStripMenuItem.Click += new System.EventHandler(this.gaussCreationToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -190,10 +219,14 @@
             this.Controls.Add(this.Group);
             this.Controls.Add(this.listbox);
             this.Controls.Add(this.Yarat);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Hypergamy";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMen)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -213,6 +246,9 @@
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.CheckBox csvfile;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem mainSettingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gaussCreationToolStripMenuItem;
     }
 }
 

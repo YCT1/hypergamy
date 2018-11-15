@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using MathNet.Numerics;
+using MathNet.Numerics.Distributions;
 namespace HyperGamy
 {
     public partial class Form1 : Form
@@ -22,11 +24,41 @@ namespace HyperGamy
 
         }
         Men[] myMen;
+        bool gauss = false;
         private void hesaplama_Click(object sender, EventArgs e)
         {
-            progressBar1.Value = 0;
             Random rastgele = new Random();
+            progressBar1.Value = 0;
             myMen = new Men[mannumber];
+            if (gauss)
+            {
+                double mean = 5;
+                double stdDev = 1.38;
+                
+                Normal normalDist = new Normal(mean, stdDev);
+                for(int i = 0; i < myMen.Length; i++)
+                {
+
+                    double a = normalDist.Sample();
+                   
+                    
+                    int b = Convert.ToInt32(a);
+                    myMen[i] = new Men();
+                    myMen[i].SMV = b;
+                    listbox.Items.Add("Sex Count: " + myMen[i].SexCount.ToString() + " SMV: " + myMen[i].SMV.ToString());
+                    //Progress Bar Code
+                    progressBar1.Maximum = myMen.Length;
+                    progressBar1.Value++;
+                    
+
+                }
+                
+                return;
+            }
+            
+            
+           
+            
             for (int i=0; i < myMen.Length; i++)
             {
                 myMen[i] = new Men();
@@ -150,6 +182,17 @@ namespace HyperGamy
             listbox.Items.Clear();
             myMen = null;
         }
+
+        private void gaussCreationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            gaussCreationToolStripMenuItem.Checked =! gaussCreationToolStripMenuItem.Checked;
+            gauss = !gauss;
+        }
+       
+        public static float Sigmoid(double value)
+        {
+            return 1.0f / (1.0f + (float)Math.Exp(-value));
+        }
     }
 
     public class Men
@@ -164,4 +207,5 @@ namespace HyperGamy
         
                 
     }
+    
 }
