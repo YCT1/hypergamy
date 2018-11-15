@@ -1,3 +1,3 @@
 # hypergamy
-A research on vectorel based gender mating wiht hypergamy
-This software are designed to simulate gender mating selection accordig to its rules.
+A research on vector-based gender mating with hypergamy
+This software is designed to simulate gender mating selection according to its rules.
