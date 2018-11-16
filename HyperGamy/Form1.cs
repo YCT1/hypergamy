@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using MathNet.Numerics;
 using MathNet.Numerics.Distributions;
+using Accord.Statistics;
 namespace HyperGamy
 {
     public partial class Form1 : Form
