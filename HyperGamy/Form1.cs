@@ -26,8 +26,8 @@ namespace HyperGamy
         }
         Men[] myMen;
         bool gauss = false;
-        bool writeListbox = false;        
-        
+        bool writeListbox = false;
+        string[] groupText;
         
         //Hesaplama Algoritmasi
         private void Hesaplama()
@@ -96,6 +96,7 @@ namespace HyperGamy
         {
             progressBar1.Value = 0;
             Random rastgele = new Random();
+            groupText = new string[myMen.Length];
             for (int i = 0; i < myMen.Length; i++)
             {
                 int[] my = new int[100];
@@ -118,10 +119,12 @@ namespace HyperGamy
 
                 }
                 myMen[my[index]].SexCount++;
+                
                 if (writeListbox)
                 {
                     groupList.Items.Add(foradd);
                 }
+                groupText[i] = foradd;
                 //Progress Bar Code
                 progressBar1.Maximum = myMen.Length;
                 progressBar1.Value++;
@@ -293,6 +296,68 @@ namespace HyperGamy
             Groupla();
             //showSMVf();
             toplaf();
+            
+        }
+
+        private void enterCMD_Click(object sender, EventArgs e)
+        {
+            ExcCMD();
+        }
+
+        private void cmdLine_TextChanged(object sender, EventArgs e)
+        {
+            //ExcCMD();
+        }
+       
+        private void ExcCMD()
+        {
+            if(cmdLine.Text == "save -g")
+            {
+                SaveArayAsCSV(groupText);
+            }
+            if (cmdLine.Text == "clear -all")
+            {
+                groupList.Items.Clear();
+                listbox.Items.Clear();
+            }
+            if (cmdLine.Text == "clear -2")
+            {
+                groupList.Items.Clear();
+            }
+            if (cmdLine.Text =="clear -1")
+            {
+                listbox.Items.Clear();
+            }
+            if (cmdLine.Text == "save -smv")
+            {
+                string[] SMV = new string[myMen.Length+1];
+                SMV[0] = "ID;SMV;Sex Count";
+                for (int i = 0; i < myMen.Length; i++)
+                {
+                    SMV[i+1] = i.ToString() + ";" + myMen[i].SMV.ToString() + ";" + myMen[i].SexCount.ToString();
+                }
+                SaveArayAsCSV(SMV);
+            }
+            if (cmdLine.Text == "show -smv")
+            {
+                listbox.Items.Add("Showing Men SMV");
+                for(int i = 0; i < myMen.Length; i++)
+                {
+                    listbox.Items.Add("ID: " + i.ToString() + " SMV: " + myMen[i].SMV.ToString());
+                }
+
+            }
+        }
+
+        private void SaveArayAsCSV(object[] ali)
+        {
+            saveFileDialog1.ShowDialog();
+            StreamWriter myOutputStream = new StreamWriter(saveFileDialog1.FileName);
+            foreach (object item in ali)
+            {
+                myOutputStream.WriteLine(item);
+            }
+            myOutputStream.Close();
         }
     }
 

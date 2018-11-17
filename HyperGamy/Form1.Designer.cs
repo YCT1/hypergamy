@@ -51,6 +51,8 @@
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.lockofnumericvalues = new System.Windows.Forms.CheckBox();
             this.doAll = new System.Windows.Forms.Button();
+            this.cmdLine = new System.Windows.Forms.TextBox();
+            this.enterCMD = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMen)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -62,7 +64,7 @@
             this.Yarat.AutoSize = true;
             this.Yarat.Location = new System.Drawing.Point(12, 492);
             this.Yarat.Name = "Yarat";
-            this.Yarat.Size = new System.Drawing.Size(266, 45);
+            this.Yarat.Size = new System.Drawing.Size(54, 45);
             this.Yarat.TabIndex = 0;
             this.Yarat.Text = "Yarat";
             this.Yarat.UseVisualStyleBackColor = true;
@@ -80,9 +82,9 @@
             // 
             // Group
             // 
-            this.Group.Location = new System.Drawing.Point(284, 492);
+            this.Group.Location = new System.Drawing.Point(72, 493);
             this.Group.Name = "Group";
-            this.Group.Size = new System.Drawing.Size(301, 45);
+            this.Group.Size = new System.Drawing.Size(61, 45);
             this.Group.TabIndex = 3;
             this.Group.Text = "Grubla";
             this.Group.UseVisualStyleBackColor = true;
@@ -98,9 +100,9 @@
             // 
             // showSMV
             // 
-            this.showSMV.Location = new System.Drawing.Point(591, 492);
+            this.showSMV.Location = new System.Drawing.Point(136, 493);
             this.showSMV.Name = "showSMV";
-            this.showSMV.Size = new System.Drawing.Size(195, 45);
+            this.showSMV.Size = new System.Drawing.Size(47, 45);
             this.showSMV.TabIndex = 5;
             this.showSMV.Text = "Show SMV";
             this.showSMV.UseVisualStyleBackColor = true;
@@ -108,9 +110,9 @@
             // 
             // topla
             // 
-            this.topla.Location = new System.Drawing.Point(792, 492);
+            this.topla.Location = new System.Drawing.Point(189, 492);
             this.topla.Name = "topla";
-            this.topla.Size = new System.Drawing.Size(153, 45);
+            this.topla.Size = new System.Drawing.Size(89, 45);
             this.topla.TabIndex = 6;
             this.topla.Text = "Toplam";
             this.topla.UseVisualStyleBackColor = true;
@@ -228,14 +230,14 @@
             // firstOneToolStripMenuItem
             // 
             this.firstOneToolStripMenuItem.Name = "firstOneToolStripMenuItem";
-            this.firstOneToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.firstOneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.firstOneToolStripMenuItem.Text = "First One";
             this.firstOneToolStripMenuItem.Click += new System.EventHandler(this.firstOneToolStripMenuItem_Click);
             // 
             // secondOneToolStripMenuItem
             // 
             this.secondOneToolStripMenuItem.Name = "secondOneToolStripMenuItem";
-            this.secondOneToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.secondOneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.secondOneToolStripMenuItem.Text = "Second One";
             this.secondOneToolStripMenuItem.Click += new System.EventHandler(this.secondOneToolStripMenuItem_Click);
             // 
@@ -290,11 +292,32 @@
             this.doAll.UseVisualStyleBackColor = true;
             this.doAll.Click += new System.EventHandler(this.doAll_Click);
             // 
+            // cmdLine
+            // 
+            this.cmdLine.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.cmdLine.Location = new System.Drawing.Point(284, 511);
+            this.cmdLine.Name = "cmdLine";
+            this.cmdLine.Size = new System.Drawing.Size(310, 26);
+            this.cmdLine.TabIndex = 18;
+            this.cmdLine.TextChanged += new System.EventHandler(this.cmdLine_TextChanged);
+            // 
+            // enterCMD
+            // 
+            this.enterCMD.Location = new System.Drawing.Point(600, 512);
+            this.enterCMD.Name = "enterCMD";
+            this.enterCMD.Size = new System.Drawing.Size(62, 26);
+            this.enterCMD.TabIndex = 19;
+            this.enterCMD.Text = "Enter";
+            this.enterCMD.UseVisualStyleBackColor = true;
+            this.enterCMD.Click += new System.EventHandler(this.enterCMD_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1089, 591);
+            this.Controls.Add(this.enterCMD);
+            this.Controls.Add(this.cmdLine);
             this.Controls.Add(this.doAll);
             this.Controls.Add(this.lockofnumericvalues);
             this.Controls.Add(this.numericUpDown2);
@@ -350,6 +373,8 @@
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.CheckBox lockofnumericvalues;
         private System.Windows.Forms.Button doAll;
+        private System.Windows.Forms.TextBox cmdLine;
+        private System.Windows.Forms.Button enterCMD;
     }
 }
 
