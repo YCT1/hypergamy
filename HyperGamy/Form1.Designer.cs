@@ -43,14 +43,20 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.mainSettingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gaussCreationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.copyFirstListBoxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.firstOneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.secondOneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.lockofnumericvalues = new System.Windows.Forms.CheckBox();
+            this.doAll = new System.Windows.Forms.Button();
+            this.cmdLine = new System.Windows.Forms.TextBox();
+            this.enterCMD = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMen)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.SuspendLayout();
             // 
             // Yarat
@@ -58,7 +64,7 @@
             this.Yarat.AutoSize = true;
             this.Yarat.Location = new System.Drawing.Point(12, 492);
             this.Yarat.Name = "Yarat";
-            this.Yarat.Size = new System.Drawing.Size(266, 45);
+            this.Yarat.Size = new System.Drawing.Size(54, 45);
             this.Yarat.TabIndex = 0;
             this.Yarat.Text = "Yarat";
             this.Yarat.UseVisualStyleBackColor = true;
@@ -70,15 +76,15 @@
             this.listbox.Location = new System.Drawing.Point(12, 38);
             this.listbox.Margin = new System.Windows.Forms.Padding(15);
             this.listbox.Name = "listbox";
-            this.listbox.Size = new System.Drawing.Size(281, 407);
+            this.listbox.Size = new System.Drawing.Size(266, 407);
             this.listbox.TabIndex = 1;
             this.listbox.SelectedIndexChanged += new System.EventHandler(this.listbox_SelectedIndexChanged);
             // 
             // Group
             // 
-            this.Group.Location = new System.Drawing.Point(284, 492);
+            this.Group.Location = new System.Drawing.Point(72, 493);
             this.Group.Name = "Group";
-            this.Group.Size = new System.Drawing.Size(301, 45);
+            this.Group.Size = new System.Drawing.Size(61, 45);
             this.Group.TabIndex = 3;
             this.Group.Text = "Grubla";
             this.Group.UseVisualStyleBackColor = true;
@@ -87,16 +93,16 @@
             // groupList
             // 
             this.groupList.FormattingEnabled = true;
-            this.groupList.Location = new System.Drawing.Point(311, 38);
+            this.groupList.Location = new System.Drawing.Point(284, 38);
             this.groupList.Name = "groupList";
-            this.groupList.Size = new System.Drawing.Size(766, 407);
+            this.groupList.Size = new System.Drawing.Size(793, 407);
             this.groupList.TabIndex = 4;
             // 
             // showSMV
             // 
-            this.showSMV.Location = new System.Drawing.Point(591, 492);
+            this.showSMV.Location = new System.Drawing.Point(136, 493);
             this.showSMV.Name = "showSMV";
-            this.showSMV.Size = new System.Drawing.Size(277, 45);
+            this.showSMV.Size = new System.Drawing.Size(47, 45);
             this.showSMV.TabIndex = 5;
             this.showSMV.Text = "Show SMV";
             this.showSMV.UseVisualStyleBackColor = true;
@@ -104,9 +110,9 @@
             // 
             // topla
             // 
-            this.topla.Location = new System.Drawing.Point(874, 492);
+            this.topla.Location = new System.Drawing.Point(189, 492);
             this.topla.Name = "topla";
-            this.topla.Size = new System.Drawing.Size(202, 45);
+            this.topla.Size = new System.Drawing.Size(89, 45);
             this.topla.TabIndex = 6;
             this.topla.Text = "Toplam";
             this.topla.UseVisualStyleBackColor = true;
@@ -116,7 +122,7 @@
             // 
             this.numericUpDown1.AccessibleDescription = "Test";
             this.numericUpDown1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.numericUpDown1.Location = new System.Drawing.Point(12, 463);
+            this.numericUpDown1.Location = new System.Drawing.Point(72, 463);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -128,24 +134,25 @@
             0,
             0});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(281, 20);
+            this.numericUpDown1.Size = new System.Drawing.Size(57, 20);
             this.numericUpDown1.TabIndex = 7;
             this.numericUpDown1.Value = new decimal(new int[] {
             2,
             0,
             0,
             0});
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // numMen
             // 
-            this.numMen.Location = new System.Drawing.Point(311, 462);
+            this.numMen.Location = new System.Drawing.Point(284, 462);
             this.numMen.Maximum = new decimal(new int[] {
             99999999,
             0,
             0,
             0});
             this.numMen.Name = "numMen";
-            this.numMen.Size = new System.Drawing.Size(274, 20);
+            this.numMen.Size = new System.Drawing.Size(301, 20);
             this.numMen.TabIndex = 8;
             this.numMen.Value = new decimal(new int[] {
             100,
@@ -211,24 +218,6 @@
             this.gaussCreationToolStripMenuItem.Text = "Gauss Creation";
             this.gaussCreationToolStripMenuItem.Click += new System.EventHandler(this.gaussCreationToolStripMenuItem_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 447);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(211, 13);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "How much man must compete for a women";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(308, 446);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(141, 13);
-            this.label2.TabIndex = 14;
-            this.label2.Text = "Number of Man and Women";
-            // 
             // copyFirstListBoxToolStripMenuItem
             // 
             this.copyFirstListBoxToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -252,11 +241,86 @@
             this.secondOneToolStripMenuItem.Text = "Second One";
             this.secondOneToolStripMenuItem.Click += new System.EventHandler(this.secondOneToolStripMenuItem_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 447);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(211, 13);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "How much man must compete for a women";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(281, 446);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(141, 13);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Number of Man and Women";
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.Location = new System.Drawing.Point(15, 463);
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(51, 20);
+            this.numericUpDown2.TabIndex = 15;
+            this.numericUpDown2.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
+            // 
+            // lockofnumericvalues
+            // 
+            this.lockofnumericvalues.AutoSize = true;
+            this.lockofnumericvalues.Location = new System.Drawing.Point(136, 464);
+            this.lockofnumericvalues.Name = "lockofnumericvalues";
+            this.lockofnumericvalues.Size = new System.Drawing.Size(50, 17);
+            this.lockofnumericvalues.TabIndex = 16;
+            this.lockofnumericvalues.Text = "Lock";
+            this.lockofnumericvalues.UseVisualStyleBackColor = true;
+            // 
+            // doAll
+            // 
+            this.doAll.Location = new System.Drawing.Point(952, 492);
+            this.doAll.Name = "doAll";
+            this.doAll.Size = new System.Drawing.Size(124, 46);
+            this.doAll.TabIndex = 17;
+            this.doAll.Text = "Do All of Them";
+            this.doAll.UseVisualStyleBackColor = true;
+            this.doAll.Click += new System.EventHandler(this.doAll_Click);
+            // 
+            // cmdLine
+            // 
+            this.cmdLine.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.cmdLine.Location = new System.Drawing.Point(284, 511);
+            this.cmdLine.Name = "cmdLine";
+            this.cmdLine.Size = new System.Drawing.Size(310, 26);
+            this.cmdLine.TabIndex = 18;
+            this.cmdLine.TextChanged += new System.EventHandler(this.cmdLine_TextChanged);
+            // 
+            // enterCMD
+            // 
+            this.enterCMD.Location = new System.Drawing.Point(600, 512);
+            this.enterCMD.Name = "enterCMD";
+            this.enterCMD.Size = new System.Drawing.Size(62, 26);
+            this.enterCMD.TabIndex = 19;
+            this.enterCMD.Text = "Enter";
+            this.enterCMD.UseVisualStyleBackColor = true;
+            this.enterCMD.Click += new System.EventHandler(this.enterCMD_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1089, 591);
+            this.Controls.Add(this.enterCMD);
+            this.Controls.Add(this.cmdLine);
+            this.Controls.Add(this.doAll);
+            this.Controls.Add(this.lockofnumericvalues);
+            this.Controls.Add(this.numericUpDown2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.csvfile);
@@ -278,6 +342,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numMen)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -305,6 +370,11 @@
         private System.Windows.Forms.ToolStripMenuItem copyFirstListBoxToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem firstOneToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem secondOneToolStripMenuItem;
+        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.CheckBox lockofnumericvalues;
+        private System.Windows.Forms.Button doAll;
+        private System.Windows.Forms.TextBox cmdLine;
+        private System.Windows.Forms.Button enterCMD;
     }
 }
 
