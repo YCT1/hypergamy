@@ -1,6 +1,8 @@
-# hypergamy
+# hypergamy LMS Model
 A research on vector-based gender mating with hypergamy
 This software is designed to simulate gender mating selection according to its rules.
+
+It will have LMS model gender selection
 
 Command Line Command
 
