@@ -8,9 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Numerics;
 using MathNet.Numerics;
 using MathNet.Numerics.Distributions;
 using Accord.Statistics;
+
 namespace HyperGamy
 {
     public partial class Form1 : Form
@@ -19,12 +21,14 @@ namespace HyperGamy
         {
             InitializeComponent();
         }
+
         int mannumber = 100;
         private void listbox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Hesaplama();
+            //Hesaplama();
         }
         Men[] myMen;
+        Women[] myWomen;
         bool gauss = false;
         bool writeListbox = false;
         string[] groupText;
@@ -35,6 +39,7 @@ namespace HyperGamy
             Random rastgele = new Random();
             progressBar1.Value = 0;
             myMen = new Men[mannumber];
+            myWomen = new Women[mannumber];
             if (gauss)
             {
                 double mean = 5.5;
@@ -82,9 +87,14 @@ namespace HyperGamy
             {
                 myMen[i] = new Men();
                 myMen[i].SMV = rastgele.Next(1, 11);
+                myMen[i].LMS = new Vector3(rastgele.Next(1, 11), rastgele.Next(1, 11), rastgele.Next(1, 11));
+                myWomen[i] = new Women();
+                myWomen[i].weightLMS = new Vector3(rastgele.Next(1, 11), rastgele.Next(1, 11), rastgele.Next(1, 11));
                 if (writeListbox)
                 {
-                   listbox.Items.Add("Sex Count: " + myMen[i].SexCount.ToString() + " SMV: " + myMen[i].SMV.ToString());
+                   listbox.Items.Add("MEN: Sex Count: " + myMen[i].SexCount.ToString() + " LMS: " + myMen[i].LMS.ToString());
+                   listbox.Items.Add("Women LMS: " + myWomen[i].weightLMS.ToString());
+
                 }
                 //Progress Bar Code
                 progressBar1.Maximum = myMen.Length;
@@ -102,15 +112,15 @@ namespace HyperGamy
                 int[] my = new int[100];
                 string foradd = "";
                 int[] SMV = new int[Int32.Parse(numericUpDown1.Value.ToString()) + 1];
-                int maxVal = 0;
+                float maxVal = 0;
                 int index = -1;
                 int randomGroupNumber = rastgele.Next(Int32.Parse(numericUpDown2.Value.ToString()), Int32.Parse(numericUpDown1.Value.ToString()) + 1);
                 for (int a = 1; a < randomGroupNumber + 1; a++)
                 {
                     my[a] = rastgele.Next(0, myMen.Length);
-                    foradd = foradd + myMen[my[a]].SMV.ToString() + ",";
+                    foradd = foradd + myMen[my[a]].LMS.ToString() + ";";
                     SMV[a] = myMen[my[a]].SMV;
-                    int thisNum = SMV[a];
+                    float thisNum =  Vector3.Dot( myWomen[i].weightLMS,myMen[my[a]].LMS);
                     if (thisNum > maxVal)
                     {
                         maxVal = thisNum;
@@ -122,7 +132,7 @@ namespace HyperGamy
                 
                 if (writeListbox)
                 {
-                    groupList.Items.Add(foradd);
+                    groupList.Items.Add("Women wLMS: "+ myWomen[i].weightLMS.ToString() +"MEN: " + foradd +"Max Value" + maxVal.ToString());
                 }
                 groupText[i] = foradd;
                 //Progress Bar Code
@@ -139,13 +149,14 @@ namespace HyperGamy
             {
                 if (writeListbox)
                 {
-                   listbox.Items.Add("ID: " + i.ToString() + " Sex Count: " + myMen[i].SexCount.ToString() + " SMV: " + myMen[i].SMV.ToString());
+                   listbox.Items.Add("ID: " + i.ToString() + " Sex Count: " + myMen[i].SexCount.ToString() + " LMS: " + myMen[i].LMS.ToString());
                 }
                 //Progress Bar Code
                 progressBar1.Maximum = myMen.Length;
                 progressBar1.Value++;
             }
         }
+        string[,] allLMSmen = new string[10, 10];
         //Topla Algoritmasi
         private void toplaf()
         {
@@ -155,26 +166,37 @@ namespace HyperGamy
             int[] toplamPeople = new int[11];
             float[] avrSex = new float[11];
             int toplamSex = 0;
+            Vector3[] toplamLMS = new Vector3[11];
+            Vector3[] toplamPeopleLMS = new Vector3[11];
+            Vector3[] avrSexLMS = new Vector3[11];
+            
             for (int i = 0; i < myMen.Length; i++)
             {
                 toplam[myMen[i].SMV] = toplam[myMen[i].SMV] + myMen[i].SexCount;
+                toplamLMS[Convert.ToInt32(myMen[i].LMS.X)].X = toplamLMS[Convert.ToInt32(myMen[i].LMS.X)].X + myMen[i].SexCount;
+                toplamLMS[Convert.ToInt32(myMen[i].LMS.Y)].Y = toplamLMS[Convert.ToInt32(myMen[i].LMS.Y)].Y + myMen[i].SexCount;
+                toplamLMS[Convert.ToInt32(myMen[i].LMS.Z)].Z = toplamLMS[Convert.ToInt32(myMen[i].LMS.Z)].Z + myMen[i].SexCount;
+
                 toplamPeople[myMen[i].SMV]++;
+                toplamPeopleLMS[Convert.ToInt32(myMen[i].LMS.X)].X++;
+                toplamPeopleLMS[Convert.ToInt32(myMen[i].LMS.Y)].Y++;
+                toplamPeopleLMS[Convert.ToInt32(myMen[i].LMS.Z)].Z++;
                 toplamSex = toplamSex + myMen[i].SexCount;
                 //////////////Progress Bar Code
                 progressBar1.Maximum = myMen.Length + toplamPeople.Length + toplam.Length;
                 progressBar1.Value++;
             }
-            for (int i = 1; i < toplamPeople.Length; i++)
+            for (int i = 1; i < toplamPeopleLMS.Length; i++)
             {
-                groupList.Items.Add(toplamPeople[i]);
+                groupList.Items.Add(toplamPeopleLMS[i].ToString());
 
                 //////////////Progress Bar Code
                 progressBar1.Value++;
             }
             groupList.Items.Add("AAAAAAAAAAAAAAA");
-            for (int i = 0; i < toplam.Length; i++)
+            for (int i = 0; i < toplamLMS.Length; i++)
             {
-                groupList.Items.Add(i.ToString() + ";" + toplam[i]);
+                groupList.Items.Add(i.ToString() + ";" + toplamLMS[i]);
                 //////////////Progress Bar Code
                 progressBar1.Value++;
             }
@@ -183,10 +205,12 @@ namespace HyperGamy
             groupList.Items.Add("AAAAAAAAAAA");
             for (int i = 1; i < toplam.Length; i++)
             {
-                float a = toplam[i];
-                float b = toplamPeople[i];
-                avrSex[i] = a / b;
-                groupList.Items.Add(avrSex[i]);
+                Vector3 a = toplamLMS[i];
+                Vector3 b = toplamPeopleLMS[i];
+                avrSexLMS[i].X = a.X / b.X;
+                avrSexLMS[i].Y = a.Y / b.Y;
+                avrSexLMS[i].Z = a.Z / b.Z;
+                groupList.Items.Add(avrSexLMS[i].ToString());
             }
             if (csvfile.Checked)
             {
@@ -198,6 +222,9 @@ namespace HyperGamy
                 }
                 myOutputStream.Close();
             }
+            allLMSmen[0, 0] = "ali";
+            allLMSmen[3, 4] = "ali23";
+
         }
 
         private void hesaplama_Click(object sender, EventArgs e)
@@ -311,7 +338,11 @@ namespace HyperGamy
        
         private void ExcCMD()
         {
-            if(cmdLine.Text == "save -g")
+            if (cmdLine.Text == "show LMS")
+            {
+                Console.WriteLine(allLMSmen[Convert.ToInt32( numericUpDown1.Value), Convert.ToInt32(numericUpDown2.Value)]);
+            }
+            if (cmdLine.Text == "save -g")
             {
                 SaveArayAsCSV(groupText);
             }
@@ -359,26 +390,35 @@ namespace HyperGamy
             }
             myOutputStream.Close();
         }
+
     }
 
     public class Men
     {
         public int SexCount { get; set; }
         public int SMV { get; set; }
-        public int L { get; set; }
-        public int M { get; set; }
-        public int S { get; set; }
+        public Vector3 LMS {get; set;}
         public Men ()
         {
             SexCount = 0;
             SMV = 0;
-            L = 0;
-            M = 0;
-            S = 0;
+            LMS = new Vector3(0, 0, 0);
             
         }
         
                 
     }
-    
+    public class Women
+    {
+        public Vector3 weightLMS { get; set; }
+        public Women()
+        {
+            weightLMS = new Vector3(0, 0, 0);
+
+        }
+
+
+    }
+   
+
 }

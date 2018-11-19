@@ -95,7 +95,7 @@
             this.groupList.FormattingEnabled = true;
             this.groupList.Location = new System.Drawing.Point(284, 38);
             this.groupList.Name = "groupList";
-            this.groupList.Size = new System.Drawing.Size(793, 407);
+            this.groupList.Size = new System.Drawing.Size(792, 407);
             this.groupList.TabIndex = 4;
             // 
             // showSMV
@@ -230,14 +230,14 @@
             // firstOneToolStripMenuItem
             // 
             this.firstOneToolStripMenuItem.Name = "firstOneToolStripMenuItem";
-            this.firstOneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.firstOneToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.firstOneToolStripMenuItem.Text = "First One";
             this.firstOneToolStripMenuItem.Click += new System.EventHandler(this.firstOneToolStripMenuItem_Click);
             // 
             // secondOneToolStripMenuItem
             // 
             this.secondOneToolStripMenuItem.Name = "secondOneToolStripMenuItem";
-            this.secondOneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.secondOneToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.secondOneToolStripMenuItem.Text = "Second One";
             this.secondOneToolStripMenuItem.Click += new System.EventHandler(this.secondOneToolStripMenuItem_Click);
             // 
