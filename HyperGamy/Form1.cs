@@ -47,28 +47,58 @@ namespace HyperGamy
                 int negSay = 0;
                 int pozSay = 0;
                 Normal normalDist = new Normal(mean, stdDev);
+                Normal looks = new Normal(mean, stdDev);
+                Normal money = new Normal(2, 1.8);
+                Normal status = new Normal(3.5, 3);
+                Binomial den = new Binomial(0.21, 10);
+                
                 for (int i = 0; i < myMen.Length; i++)
                 {
 
-                    double a = normalDist.Sample();
-
-
-                    int b = Convert.ToInt32(a);
+                    double l = looks.Sample();
+                    double m = den.Sample();
+                    double s = status.Sample();
+                    double degX =  10*rastgele.NextDouble();
+                    int li = Convert.ToInt32(l);
+                    int mi = Convert.ToInt32(m);
+                    int si = Convert.ToInt32(s);
                     myMen[i] = new Men();
-                    if (b > 10)
+                    myWomen[i] = new Women();
+                    myWomen[i].weightLMS = new Vector3(rastgele.Next(1, 11), rastgele.Next(1, 11), rastgele.Next(1, 11));
+                    if (li > 10)
                     {
                         negSay++;
-                        b = 10;
+                        li = 10;
                     }
-                    if (b < 1)
+                    if (li < 1)
                     {
-                        b = 1;
+                        li = 1;
                         pozSay++;
                     }
-                    myMen[i].SMV = b;
+                    if (mi > 10)
+                    {
+                        negSay++;
+                        mi = 10;
+                    }
+                    if (mi < 1)
+                    {
+                        mi = 1;
+                        pozSay++;
+                    }
+                    if (si > 10)
+                    {
+                        negSay++;
+                        si = 10;
+                    }
+                    if (si < 1)
+                    {
+                        si = 1;
+                        pozSay++;
+                    }
+                    myMen[i].LMS = new Vector3(li, mi, si);
                     if (writeListbox)
                     {
-                       listbox.Items.Add("Sex Count: " + myMen[i].SexCount.ToString() + " SMV: " + myMen[i].SMV.ToString());
+                       listbox.Items.Add("Sex Count: " + myMen[i].LMS.ToString() + " SMV: " + myMen[i].SMV.ToString());
                     }
 
                     //Progress Bar Code
@@ -102,6 +132,7 @@ namespace HyperGamy
             }
         }
         //Groplama Algoritmasi
+        
         private void Groupla()
         {
             progressBar1.Value = 0;
@@ -119,6 +150,8 @@ namespace HyperGamy
                 {
                     my[a] = rastgele.Next(0, myMen.Length);
                     foradd = foradd + myMen[my[a]].LMS.ToString() + ";";
+                    myMen[my[a]].IDsofGroups = myMen[my[a]].IDsofGroups + i.ToString() + ";";
+                    myMen[my[a]].attempted++;
                     SMV[a] = myMen[my[a]].SMV;
                     float thisNum =  Vector3.Dot( myWomen[i].weightLMS,myMen[my[a]].LMS);
                     if (thisNum > maxVal)
@@ -222,8 +255,7 @@ namespace HyperGamy
                 }
                 myOutputStream.Close();
             }
-            allLMSmen[0, 0] = "ali";
-            allLMSmen[3, 4] = "ali23";
+            
 
         }
 
@@ -338,9 +370,36 @@ namespace HyperGamy
        
         private void ExcCMD()
         {
-            if (cmdLine.Text == "show LMS")
+            if(cmdLine.Text == "save -id -lms" || cmdLine.Text == "save -lms -id")
             {
-                Console.WriteLine(allLMSmen[Convert.ToInt32( numericUpDown1.Value), Convert.ToInt32(numericUpDown2.Value)]);
+                string[] ids = new string[myMen.Length];
+                for (int i = 0; i < myMen.Length; i++)
+                {
+                    
+                    ids[i] = i.ToString() + ";" + myMen[i].LMS.ToString() + ";" + myMen[i].SexCount.ToString()+";"+myMen[i].attempted.ToString()+";"+myMen[i].IDsofGroups;
+
+                }
+                SaveArayAsCSV(ids);
+            }
+            if(cmdLine.Text == "save -id")
+            {
+                string[] ids = new string[myMen.Length];
+                for(int i=0; i < myMen.Length; i++)
+                {
+                    ids[i] = myMen[i].IDsofGroups;
+                }
+                SaveArayAsCSV(ids);
+                
+            }
+            if (cmdLine.Text == "save -lms")
+            {
+                string[] SMV = new string[myMen.Length + 1];
+                SMV[0] = "ID;LMS;Sex Count";
+                for (int i = 0; i < myMen.Length; i++)
+                {
+                    SMV[i + 1] = i.ToString() + ";" + myMen[i].LMS.ToString() + ";" + myMen[i].SexCount.ToString();
+                }
+                SaveArayAsCSV(SMV);
             }
             if (cmdLine.Text == "save -g")
             {
@@ -398,12 +457,15 @@ namespace HyperGamy
         public int SexCount { get; set; }
         public int SMV { get; set; }
         public Vector3 LMS {get; set;}
+        public int attempted { get; set; }
+        public string IDsofGroups { get; set; }
         public Men ()
         {
             SexCount = 0;
             SMV = 0;
             LMS = new Vector3(0, 0, 0);
-            
+            IDsofGroups = "";
+            attempted = 0;
         }
         
                 
