@@ -1,4 +1,4 @@
-# hypergamy LMS Model
+# hypergamy
 A research on vector-based gender mating with hypergamy
 This software is designed to simulate gender mating selection according to its rules.
 
@@ -9,7 +9,7 @@ Saves mating groups as CSV file
 
 "clear -all"
 Clears all lists
-s
+
 "clear -2"
 Clears List 2
 
