@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{A652C740-F6C6-45D5-9978-01957940F1C3}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>HyperGamy</RootNamespace>
     <AssemblyName>HyperGamy</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>

@@ -22,22 +22,22 @@ namespace HyperGamy
             InitializeComponent();
         }
 
-        int mannumber = 100;
+        public int mannumber = 100;
         private void listbox_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Hesaplama();
         }
-        Men[] myMen;
-        Women[] myWomen;
-        bool gauss = false;
-        bool writeListbox = false;
-        string[] groupText;
-        
+        public Men[] myMen;
+        public Women[] myWomen;
+        public bool gauss = false;
+        public bool writeListbox = false;
+        public string[] groupText;
+
         //Hesaplama Algoritmasi
-        private void Hesaplama()
+        public void Hesaplama()
         {
             Random rastgele = new Random();
-            progressBar1.Value = 0;
+            //progressBar1.Value = 0;
             myMen = new Men[mannumber];
             myWomen = new Women[mannumber];
             if (gauss)
@@ -145,8 +145,9 @@ namespace HyperGamy
             }
         }
         //Groplama Algoritmasi
-        
-        private void Groupla()
+        public int upperGroupLimit=0;
+        public int lowerGroupLimit = 0;
+        public void Groupla()
         {
             progressBar1.Value = 0;
             Random rastgele = new Random();
@@ -155,10 +156,10 @@ namespace HyperGamy
             {
                 int[] my = new int[100];
                 string foradd = "";
-                int[] SMV = new int[Int32.Parse(numericUpDown1.Value.ToString()) + 1];
+                int[] SMV = new int[upperGroupLimit+1];
                 float maxVal = 0;
                 int index = -1;
-                int randomGroupNumber = rastgele.Next(Int32.Parse(numericUpDown2.Value.ToString()), Int32.Parse(numericUpDown1.Value.ToString()) + 1);
+                int randomGroupNumber = rastgele.Next(lowerGroupLimit,upperGroupLimit+1);
                 for (int a = 1; a < randomGroupNumber + 1; a++)
                 {
                     my[a] = rastgele.Next(0, myMen.Length);
@@ -187,7 +188,7 @@ namespace HyperGamy
             }
         }
         //Sex Yapma Algoritmasi
-        private void showSMVf()
+        public void showSMVf()
         {
             progressBar1.Value = 0;
             listbox.Items.Clear();
@@ -204,7 +205,7 @@ namespace HyperGamy
         }
         string[,] allLMSmen = new string[10, 10];
         //Topla Algoritmasi
-        private void toplaf()
+        public void toplaf()
         {
             progressBar1.Value = 0;
             groupList.Items.Clear();
