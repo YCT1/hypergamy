@@ -5,8 +5,12 @@ This software is designed to simulate gender mating selection according to its r
 It will have LMS model gender selection
 
 Command Line Command
+
 "save -lms"
 Saves Mens LMS 
+
+"save -lms id -al" or "save -id -lms -al"
+Saves Man's LMS as seperate collum, Sex Count, Attempted to Sex, Group Ids
 
 "save -lms id" or "save -id -lms"
 Saves Man's LMS, Sex Count, Attempted to Sex, Group Ids

@@ -48,23 +48,36 @@ namespace HyperGamy
                 int pozSay = 0;
                 Normal normalDist = new Normal(mean, stdDev);
                 Normal looks = new Normal(mean, stdDev);
-                Normal money = new Normal(2, 1.8);
+                //Normal money = new Normal(2, 1.8);
                 Normal status = new Normal(3.5, 3);
-                Binomial den = new Binomial(0.21, 10);
+                //Binomial den = new Binomial(0.21, 10);
+                Beta bet = new Beta(2.8, 6);
                 
+                Normal wMoney = new Normal(10, 5);
                 for (int i = 0; i < myMen.Length; i++)
                 {
 
                     double l = looks.Sample();
-                    double m = den.Sample();
+                    double m = bet.Sample()*10;
                     double s = status.Sample();
                     double degX =  10*rastgele.NextDouble();
+                    double wMoneyi = wMoney.Sample();
+                    if (wMoneyi >10)
+                    {
+                        wMoneyi = 10;
+                    }
+                    if (wMoneyi < 1)
+                    {
+                        wMoneyi = 1;
+                    }
+                    //listbox.Items.Add(wMoneyi.ToString());
                     int li = Convert.ToInt32(l);
                     int mi = Convert.ToInt32(m);
                     int si = Convert.ToInt32(s);
+                    int wmi = Convert.ToInt32(wMoneyi);
                     myMen[i] = new Men();
                     myWomen[i] = new Women();
-                    myWomen[i].weightLMS = new Vector3(rastgele.Next(1, 11), rastgele.Next(1, 11), rastgele.Next(1, 11));
+                    myWomen[i].weightLMS = new Vector3(rastgele.Next(1, 11), wmi, rastgele.Next(1, 11));
                     if (li > 10)
                     {
                         negSay++;
@@ -370,6 +383,20 @@ namespace HyperGamy
        
         private void ExcCMD()
         {
+            if(cmdLine.Text == "cal -sexn")
+            {
+                double totalSex = 0;
+                double attemptedSex = 0;
+                for(int i = 0; i < myMen.Length; i++)
+                {
+                    totalSex = totalSex +  Convert.ToDouble( myMen[i].SexCount);
+                    attemptedSex =attemptedSex + Convert.ToDouble(myMen[i].attempted);
+                }
+                listbox.Items.Add("Total Sex: " + totalSex.ToString());
+                listbox.Items.Add("Total Attempted: " + attemptedSex.ToString());
+                double ratio = 100*totalSex / attemptedSex;
+                listbox.Items.Add("Ratio: %" + ratio.ToString());
+            }
             if(cmdLine.Text == "save -id -lms" || cmdLine.Text == "save -lms -id")
             {
                 string[] ids = new string[myMen.Length];
@@ -381,7 +408,19 @@ namespace HyperGamy
                 }
                 SaveArayAsCSV(ids);
             }
-            if(cmdLine.Text == "save -id")
+            if (cmdLine.Text == "save -id -lms -al" || cmdLine.Text == "save -lms -id -al")
+            {
+                string[] ids = new string[myMen.Length+1];
+                ids[0] = "ID;Looks;Money;Status;Sex Count;Sex Attempted;IDs";
+                for (int i = 0; i < myMen.Length; i++)
+                {
+
+                    ids[i+1] = i.ToString() + ";" + myMen[i].LMS.X +";" + +myMen[i].LMS.Y +";" + +myMen[i].LMS.Z +";" + myMen[i].SexCount.ToString() + ";" + myMen[i].attempted.ToString() + ";" + myMen[i].IDsofGroups;
+
+                }
+                SaveArayAsCSV(ids);
+            }
+            if (cmdLine.Text == "save -id")
             {
                 string[] ids = new string[myMen.Length];
                 for(int i=0; i < myMen.Length; i++)
